@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "github.com/example/protofiles";
+
+import "common.proto";
+
+service AuthService {
+  rpc Authenticate(AuthRequest) returns (AuthResponse);
+}
+
+message AuthRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message AuthResponse {
+  bool success = 1;
+  string message = 2;
+  repeated string roles = 3;
+}
+
+message ClientDetails {
+  string name = 1;
+  string bank_name = 2;
+  string account_number = 3;
+}
+
+message RegistrationResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+
+message BalanceRequest {
+  string clientName = 1;
+}
+
+message BalanceResponse {
+  double balance = 1;
+  string currency = 2;
+}
+
+message TransactionStatusRequest {
+  string transaction_id = 1;
+}
+
+message TransactionStatusResponse {
+  string transaction_id = 1;
+  string status = 2;
+  string message = 3;
+  map<string, string> metadata = 4;
+}
+
+message ListTransactionsRequest {
+  bool include_completed = 1;
+}
+
+
+message TransactionInfo {
+  string id = 1;
+  string type = 2;
+  string sender = 3;
+  string receiver = 4;
+  float amount = 5;
+  string status = 6;
+  string timestamp = 7;
+}
+
+
+message ListTransactionsResponse {
+  repeated TransactionInfo transactions = 1;
+}
+
+
+service PaymentGateway {
+    rpc Authenticate(AuthRequest) returns (AuthResponse);
+    rpc MakePayment(PaymentDetails) returns (proto.PaymentResponse);
+    rpc GetBalance(BalanceRequest) returns (BalanceResponse);
+    rpc GetTransactionStatus(TransactionStatusRequest) returns (TransactionStatusResponse);
+    rpc ListActiveTransactions(ListTransactionsRequest) returns (ListTransactionsResponse);
+}

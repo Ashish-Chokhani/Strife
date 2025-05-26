@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "github.com/example/protofiles";
+
+import "common.proto";
+
+message PaymentRequest {
+  string account_number = 1;
+  float amount = 2;
+  string transaction_id = 3;
+}
+
+message TwoPhaseRequest {
+  string transaction_id = 1;
+  string client_name = 2;
+  float amount = 3;
+}
+
+message TwoPhaseResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+service BankService {
+  // Original method for simple payments
+  rpc ProcessPayment(PaymentRequest) returns (proto.PaymentResponse);
+  
+  // New methods for two-phase commit
+  rpc PrepareDebit(TwoPhaseRequest) returns (TwoPhaseResponse);
+  rpc PrepareCredit(TwoPhaseRequest) returns (TwoPhaseResponse);
+  rpc CommitDebit(TwoPhaseRequest) returns (TwoPhaseResponse);
+  rpc CommitCredit(TwoPhaseRequest) returns (TwoPhaseResponse);
+  rpc Abort(TwoPhaseRequest) returns (TwoPhaseResponse);
+  
+  // Method to get bank name
+  rpc GetBankName(TwoPhaseRequest) returns (TwoPhaseResponse);
+}

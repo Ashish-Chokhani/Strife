@@ -1,0 +1,22 @@
+[
+  {
+    "clientName": "Dave",
+    "balance": 1292,
+    "currency": "USD"
+  },
+  {
+    "clientName": "Alice",
+    "balance": 202,
+    "currency": "USD"
+  },
+  {
+    "clientName": "Bob",
+    "balance": 160,
+    "currency": "USD"
+  },
+  {
+    "clientName": "Charlie",
+    "balance": 453,
+    "currency": "USD"
+  }
+]

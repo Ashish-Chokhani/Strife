@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "github.com/example/protofiles";
+
+// Update PaymentResponse to include additional fields
+message PaymentResponse {
+  bool success = 1;
+  string message = 2;
+  string transaction_id = 3;  // Add this field
+  float amount = 4;           // Add this field
+  string currency = 5;        // Add this field
+}
+
+// Update PaymentDetails to include ReceiverName
+message PaymentDetails {
+  string client_name = 1;
+  float amount = 2;
+  string receiver_name = 3;   // Add this field
+  string currency = 4;        // Optional, add if needed
+  string request_id = 5;
+}
