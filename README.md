@@ -1,7 +1,7 @@
 # Strife
 
 ## Introduction
-This problem analyzes a distributed payment processing platform that leverages gRPC for inter-service communication. The system employs a three-component architecture consisting of a Gateway Server, multiple Bank Servers, and a Client Application. Key features include Two-Phase Commit transaction protocol, offline payment processing, transaction monitoring, and secure authentication mechanisms. The analysis covers system architecture, protocol implementation, fault tolerance mechanisms, and identifies strengths of the system.
+This project analyzes a distributed payment processing platform that leverages gRPC for inter-service communication. The system employs a three-component architecture consisting of a Gateway Server, multiple Bank Servers, and a Client Application. Key features include Two-Phase Commit transaction protocol, offline payment processing, transaction monitoring, and secure authentication mechanisms. The analysis covers system architecture, protocol implementation, fault tolerance mechanisms, and identifies strengths of the system.
 
 ## System Assumptions
 1. Registered users can be directly extracted from the file
